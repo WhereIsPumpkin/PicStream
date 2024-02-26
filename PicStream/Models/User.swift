@@ -11,6 +11,6 @@ struct User: Equatable {
   let id: String
   let email: String
   let password: String
-  let age: Int
+  let age: Int?
 }
 
