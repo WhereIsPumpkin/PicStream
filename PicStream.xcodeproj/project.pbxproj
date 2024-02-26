@@ -95,6 +95,7 @@
 		75909ABA2B8CF182005AB565 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				75909AC52B8CFB3F005AB565 /* Welcome */,
 				75909ABB2B8CF189005AB565 /* Auth */,
 			);
 			path = Scenes;
@@ -103,7 +104,6 @@
 		75909ABB2B8CF189005AB565 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				75909AA82B8CD6A7005AB565 /* WelcomeView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -130,6 +130,14 @@
 				75909AC32B8CFAD0005AB565 /* View+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		75909AC52B8CFB3F005AB565 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				75909AA82B8CD6A7005AB565 /* WelcomeView.swift */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

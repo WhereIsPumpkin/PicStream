@@ -10,6 +10,13 @@ import SwiftUI
 struct WelcomeView: View {
     
     var body: some View {
+        ZStack {
+            Color.background.ignoresSafeArea()
+            content
+        }
+    }
+    
+    private var content: some View {
         VStack(spacing: 30) {
             heroImage
             welcomeText
