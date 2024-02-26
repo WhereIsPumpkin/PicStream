@@ -8,7 +8,7 @@
 import Foundation
 
 struct User: Equatable {
-  let id: String
+  let id: UUID
   let email: String
   let password: String
   let age: Int?

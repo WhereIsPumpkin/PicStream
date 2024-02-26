@@ -24,8 +24,8 @@ struct ActionButton: View {
                 .fontWeight(.semibold)
                 .background(isDisabled ? .gray : backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                .disabled(isDisabled)
         }
+        .disabled(isDisabled)
     }
 }
 

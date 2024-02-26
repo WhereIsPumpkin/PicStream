@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @State var email = ""
-    @State var password = ""
-    @State var age = ""
     
+    // MARK: - Properties
+    @StateObject private var viewModel = RegistrationViewModel()
+    
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                
                 content
+            }
+            .navigationDestination(isPresented: $viewModel.registrationSuccess) {
+                MainPageView()
             }
         }
     }
@@ -30,7 +33,7 @@ struct RegistrationView: View {
             registrationFields
             Spacer()
             registerButton
-        
+            
         }
         .padding(36)
     }
@@ -47,19 +50,44 @@ struct RegistrationView: View {
                     subtitle: "by creating a free ccount")
     }
     
-    private var registrationFields: some View {
-        VStack(spacing: 20) {
-            RoundedTextField(text: $email, placeholder: "Enter your email", icon: .envelope)
-            RoundedTextField(text: $age, placeholder: "Enter your age", icon: .calendar)
-            RoundedTextField(text: $password, placeholder: "Enter your password", icon: .lock, isSecure: true)
+    private var emailField: some View {
+        VStack(spacing: 8) {
+            RoundedTextField(text: $viewModel.email, placeholder: "Enter your email", icon: .envelope, isError: viewModel.emailErrorMessage != nil)
+            ErrorMessageView(message: viewModel.emailErrorMessage)
         }
     }
     
-    private var registerButton: some View {
-        ActionButton(title: "Register", backgroundColor: .customBlue, foregroundColor: .white) {
-            // MARK: - Handle Register
+    private var ageField: some View {
+        VStack(spacing: 8) {
+            RoundedTextField(text: $viewModel.age.max(2), placeholder: "Enter your age", icon: .calendar, keyboardType: .numberPad, isError: viewModel.ageErrorMessage != nil)
+            ErrorMessageView(message: viewModel.ageErrorMessage)
         }
     }
+    
+    private var passwordField: some View {
+        VStack(spacing: 8) {
+            RoundedTextField(text: $viewModel.password, placeholder: "Enter your password", icon: .lock, isSecure: true, isError: viewModel.passwordErrorMessage != nil)
+            ErrorMessageView(message: viewModel.passwordErrorMessage)
+        }
+    }
+    
+    private var registrationFields: some View {
+        VStack(spacing: 20) {
+            emailField
+            ageField
+            passwordField
+        }
+    }
+    
+    
+    private var registerButton: some View {
+        ActionButton(title: "Register", backgroundColor: .customBlue, foregroundColor: .white, isDisabled: !viewModel.isRegisterEnabled) {
+            Task {
+                await viewModel.register()
+            }
+        }
+    }
+    
     
 }
 

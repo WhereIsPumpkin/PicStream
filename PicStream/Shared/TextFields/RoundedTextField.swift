@@ -11,8 +11,9 @@ struct RoundedTextField: View {
     @Binding var text: String
     var placeholder: String
     var icon: String
-    var isError: Bool = false
-    var isSecure: Bool = false
+    var keyboardType: UIKeyboardType = .default
+    var isSecure = false
+    var isError = false
     
     var body: some View {
         HStack {
@@ -30,6 +31,7 @@ struct RoundedTextField: View {
         }
         .padding(.leading, 20)
         .padding(.trailing, 16)
+        .keyboardType(keyboardType)
         .frame(height: 50)
         .background(.textFieldBackground.opacity(0.2))
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(isError ? Color.red : Color.clear, lineWidth: 4))

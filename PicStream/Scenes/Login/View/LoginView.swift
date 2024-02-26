@@ -61,8 +61,8 @@ struct LoginView: View {
                 RoundedTextField(text: $viewModel.password,
                                  placeholder: "Enter your password",
                                  icon: "lock.fill",
-                                 isError: viewModel.isDisplayingError,
-                                 isSecure: true)
+                                 isSecure: true, 
+                                 isError: viewModel.isDisplayingError)
             }
             
             errorMessage
@@ -76,8 +76,6 @@ struct LoginView: View {
                     .foregroundColor(.red)
                     .font(.system(size: 12))
             }
-            
-            
         }
     }
     

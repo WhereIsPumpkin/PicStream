@@ -8,28 +8,25 @@
 import Foundation
 
 enum UserError: Error {
-    case authenticationFailed
+    /// auth errors
     case userNotFound
-    case invalidEmailFormat
     case incorrectPassword
+    case emailAlreadyInUse
 }
 
 protocol UserRepository {
     func login(email: String, password: String) async throws -> Void
+    func register(email: String, password: String, age: Int) async throws -> Void
 }
 
 final class MockUserRepository: UserRepository {
     private var registeredUsers = [
-        User(id: UUID().uuidString, email: "test@email.com", password: "test1234", age: 21)
+        User(id: UUID(), email: "test@email.com", password: "test1234", age: 21)
     ]
     
     func login(email: String, password: String) async throws -> Void {
-        ///    network delay simulation
+        ///   network delay simulation
         try await Task.sleep(nanoseconds: 1_000_000_000)
-        
-        guard email.isValidEmail else {
-            throw UserError.invalidEmailFormat
-        }
         
         guard let user = registeredUsers.first(where: { $0.email == email }) else {
             throw UserError.userNotFound
@@ -39,5 +36,18 @@ final class MockUserRepository: UserRepository {
             throw UserError.incorrectPassword
         }
     }
+    
+    func register(email: String, password: String, age: Int) async throws -> Void {
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+        
+        if registeredUsers.contains(where: { $0.email == email }) {
+            throw UserError.emailAlreadyInUse
+        }
+        
+        let user = User(id: UUID(), email: email, password: password, age: age)
+        registeredUsers.append(user)
+    }
+
 }
+
 

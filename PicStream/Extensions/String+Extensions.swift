@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    // MARK: - static icons
     static var envelope: String {
         "envelope"
     }
@@ -18,11 +19,20 @@ extension String {
         "calendar"
     }
     
-    /// validation
+    // MARK: - Validations
     var isValidEmail: Bool {
         let emailRegex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailTest.evaluate(with: self)
+    }
+    
+    var isValidPassword: Bool {
+        return self.count >= 6 && self.count <= 12
+    }
+    
+    var isValidAgeString: Bool {
+        guard let age = Int(self), age >= 18, age <= 99 else { return false }
+        return true
     }
 }
 
