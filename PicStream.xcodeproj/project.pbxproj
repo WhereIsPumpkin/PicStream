@@ -69,8 +69,8 @@
 		75909AA52B8CD6A7005AB565 /* PicStream */ = {
 			isa = PBXGroup;
 			children = (
-				75909AD32B8D118B005AB565 /* Repository */,
 				75909AB42B8CE160005AB565 /* App */,
+				75909AD32B8D118B005AB565 /* Repository */,
 				75909AB52B8CE169005AB565 /* Models */,
 				75909ABA2B8CF182005AB565 /* Scenes */,
 				75909ABE2B8CF808005AB565 /* Shared */,

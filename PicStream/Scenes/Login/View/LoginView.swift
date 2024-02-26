@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+    @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
         ZStack {
@@ -55,16 +55,24 @@ struct LoginView: View {
     }
     
     private var loginButton: some View {
-        ActionButton(title: "Login", 
+        ActionButton(title: "Login",
                      backgroundColor: .customBlue,
                      foregroundColor: .white) {
-            
+            Task {
+                await viewModel.login()
+            }
         }
-
     }
- 
+    
 }
 
 #Preview {
     LoginView(viewModel: LoginViewModel())
+}
+
+// Example MainPageView placeholder
+struct MainPageView: View {
+    var body: some View {
+        Text("Main Page")
+    }
 }

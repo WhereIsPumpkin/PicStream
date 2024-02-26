@@ -10,10 +10,12 @@ import Foundation
 enum UserError: Error {
     case authenticationFailed
     case userNotFound
+    case invalidEmailFormat
+    case incorrectPassword
 }
 
 protocol UserRepository {
-    func login(email: String, password: String) async throws -> User
+    func login(email: String, password: String) async throws -> Void
 }
 
 final class MockUserRepository: UserRepository {
@@ -21,15 +23,21 @@ final class MockUserRepository: UserRepository {
         User(id: UUID().uuidString, email: "test@email.com", password: "test1234", age: 21)
     ]
     
-    func login(email: String, password: String) async throws -> User {
+    func login(email: String, password: String) async throws -> Void {
         ///    network delay simulation
         try await Task.sleep(nanoseconds: 2_000_000_000)
         
-        guard let user = registeredUsers.first(where: { $0.email == email && $0.password == password }) else {
-            throw UserError.authenticationFailed
+        guard email.isValidEmail else {
+            throw UserError.invalidEmailFormat
         }
         
-        return user
+        guard let user = registeredUsers.first(where: { $0.email == email }) else {
+            throw UserError.userNotFound
+        }
+        
+        guard user.password == password else {
+            throw UserError.incorrectPassword
+        }
     }
 }
 
