@@ -9,14 +9,28 @@ import SwiftUI
 
 struct WelcomeView: View {
     
+    // MARK: - Properties
+    @State private var isShowingLoginView = false
+    
+    // MARK: - Body
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            content
+        NavigationStack {
+            mainContent
+                .navigationDestination(isPresented: $isShowingLoginView) {
+                    LoginView()
+                }
         }
     }
     
-    private var content: some View {
+    // MARK: - Computer Properties
+    private var mainContent: some View {
+        ZStack {
+            Color.background.ignoresSafeArea()
+            mainViewContent
+        }
+    }
+    
+    private var mainViewContent: some View {
         VStack(spacing: 30) {
             heroImage
             welcomeText
@@ -35,7 +49,7 @@ struct WelcomeView: View {
     }
     
     private var welcomeText: some View {
-        WelcomeText(title: "Hello, welcome!", 
+        WelcomeText(title: "Hello, welcome!",
                     subtitle: "Log in or create an account!" )
     }
     
@@ -51,7 +65,7 @@ struct WelcomeView: View {
         ActionButton(title: "Login",
                      backgroundColor: .customBlue,
                      foregroundColor: .white) {
-            print("Login")
+            isShowingLoginView = true
         }
         
     }

@@ -11,7 +11,6 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     
-    
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
@@ -50,7 +49,7 @@ struct LoginView: View {
                              placeholder: "Enter your email",
                              icon: .envelope)
             
-            RoundedTextField(text: $email,
+            RoundedTextField(text: $password,
                              placeholder: "Enter your email",
                              icon: .lock )
         }
