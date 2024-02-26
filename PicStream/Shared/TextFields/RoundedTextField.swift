@@ -11,10 +11,18 @@ struct RoundedTextField: View {
     @Binding var text: String
     var placeholder: String
     var icon: String
+    var isError: Bool = false
+    var isSecure: Bool = false
     
     var body: some View {
         HStack {
-            TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textFieldText))
+            Group {
+                if isSecure {
+                    SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textFieldText))
+                } else {
+                    TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(.textFieldText))
+                }
+            }
             
             Image(systemName: icon)
                 .scaleEffect(1.2)
@@ -24,6 +32,7 @@ struct RoundedTextField: View {
         .padding(.trailing, 16)
         .frame(height: 50)
         .background(.textFieldBackground.opacity(0.2))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(isError ? Color.red : Color.clear, lineWidth: 4))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }

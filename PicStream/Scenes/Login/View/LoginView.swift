@@ -43,14 +43,33 @@ struct LoginView: View {
     }
     
     private var authFields: some View {
-        VStack(spacing: 24) {
-            RoundedTextField(text: $viewModel.email,
-                             placeholder: "Enter your email",
-                             icon: .envelope)
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(spacing: 24) {
+                RoundedTextField(text: $viewModel.email,
+                                 placeholder: "Enter your email",
+                                 icon: "envelope.open.fill",
+                                 isError: viewModel.isDisplayingError)
+                
+                RoundedTextField(text: $viewModel.password,
+                                 placeholder: "Enter your password",
+                                 icon: "lock.fill",
+                                 isError: viewModel.isDisplayingError,
+                                 isSecure: true)
+            }
             
-            RoundedTextField(text: $viewModel.password,
-                             placeholder: "Enter your email",
-                             icon: .lock )
+            errorMessage
+        }
+    }
+    
+    private var errorMessage: some View {
+        HStack {
+            if viewModel.isDisplayingError {
+                Text(viewModel.lastErrorMessage)
+                    .foregroundColor(.red)
+                    .font(.system(size: 12))
+            }
+            
+            
         }
     }
     

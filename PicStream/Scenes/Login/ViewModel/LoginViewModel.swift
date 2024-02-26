@@ -25,7 +25,6 @@ class LoginViewModel: ObservableObject {
     }
     
     func login() async {
-        guard validateCredentials() else { return }
         
         do {
             try await userRepository.login(email: email, password: password)
@@ -35,14 +34,6 @@ class LoginViewModel: ObservableObject {
         } catch {
             lastErrorMessage = "An unexpected error occurred."
         }
-    }
-    
-    private func validateCredentials() -> Bool {
-        guard !email.isEmpty, email.isValidEmail, !password.isEmpty, password.count >= 6, password.count <= 12 else {
-            lastErrorMessage = "Email must be valid and password must be between 6 to 12 characters."
-            return false
-        }
-        return true
     }
     
     private func handleUserError(_ error: UserError) {

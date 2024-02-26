@@ -25,7 +25,7 @@ final class MockUserRepository: UserRepository {
     
     func login(email: String, password: String) async throws -> Void {
         ///    network delay simulation
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep(nanoseconds: 1_000_000_000)
         
         guard email.isValidEmail else {
             throw UserError.invalidEmailFormat
