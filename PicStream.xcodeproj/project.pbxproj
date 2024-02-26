@@ -14,6 +14,10 @@
 		75909AB82B8CE1E4005AB565 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AB72B8CE1E4005AB565 /* User.swift */; };
 		75909AC12B8CF868005AB565 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AC02B8CF868005AB565 /* ActionButton.swift */; };
 		75909AC42B8CFAD0005AB565 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AC32B8CFAD0005AB565 /* View+Extensions.swift */; };
+		75909ACA2B8D03CB005AB565 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AC92B8D03CB005AB565 /* LoginView.swift */; };
+		75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909ACC2B8D0535005AB565 /* WelcomeText.swift */; };
+		75909AD02B8D0606005AB565 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909ACF2B8D0606005AB565 /* RoundedTextField.swift */; };
+		75909AD22B8D097D005AB565 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AD12B8D097D005AB565 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		75909AB72B8CE1E4005AB565 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75909AC02B8CF868005AB565 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		75909AC32B8CFAD0005AB565 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		75909AC92B8D03CB005AB565 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		75909ACC2B8D0535005AB565 /* WelcomeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeText.swift; sourceTree = "<group>"; };
+		75909ACF2B8D0606005AB565 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		75909AD12B8D097D005AB565 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +68,7 @@
 				75909AB42B8CE160005AB565 /* App */,
 				75909AB52B8CE169005AB565 /* Models */,
 				75909ABA2B8CF182005AB565 /* Scenes */,
-				75909ABE2B8CF808005AB565 /* Views */,
+				75909ABE2B8CF808005AB565 /* Shared */,
 				75909AC22B8CFA86005AB565 /* Extensions */,
 				75909AAA2B8CD6A8005AB565 /* Assets.xcassets */,
 				75909AAC2B8CD6A8005AB565 /* Preview Content */,
@@ -96,24 +104,28 @@
 			isa = PBXGroup;
 			children = (
 				75909AC52B8CFB3F005AB565 /* Welcome */,
-				75909ABB2B8CF189005AB565 /* Auth */,
+				75909ABB2B8CF189005AB565 /* Login */,
+				75909AC62B8D0256005AB565 /* Registration */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		75909ABB2B8CF189005AB565 /* Auth */ = {
+		75909ABB2B8CF189005AB565 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				75909AC92B8D03CB005AB565 /* LoginView.swift */,
 			);
-			path = Auth;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		75909ABE2B8CF808005AB565 /* Views */ = {
+		75909ABE2B8CF808005AB565 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				75909ACE2B8D05F0005AB565 /* TextFields */,
+				75909ACB2B8D0528005AB565 /* Views */,
 				75909ABF2B8CF815005AB565 /* Buttons */,
 			);
-			path = Views;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		75909ABF2B8CF815005AB565 /* Buttons */ = {
@@ -128,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				75909AC32B8CFAD0005AB565 /* View+Extensions.swift */,
+				75909AD12B8D097D005AB565 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,6 +151,29 @@
 				75909AA82B8CD6A7005AB565 /* WelcomeView.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		75909AC62B8D0256005AB565 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		75909ACB2B8D0528005AB565 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				75909ACC2B8D0535005AB565 /* WelcomeText.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		75909ACE2B8D05F0005AB565 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				75909ACF2B8D0606005AB565 /* RoundedTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75909ACA2B8D03CB005AB565 /* LoginView.swift in Sources */,
 				75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */,
+				75909AD22B8D097D005AB565 /* String+Extensions.swift in Sources */,
+				75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */,
+				75909AD02B8D0606005AB565 /* RoundedTextField.swift in Sources */,
 				75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */,
 				75909AB82B8CE1E4005AB565 /* User.swift in Sources */,
 				75909AC42B8CFAD0005AB565 /* View+Extensions.swift in Sources */,

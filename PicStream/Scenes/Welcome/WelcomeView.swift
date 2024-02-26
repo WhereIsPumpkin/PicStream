@@ -35,17 +35,8 @@ struct WelcomeView: View {
     }
     
     private var welcomeText: some View {
-        VStack(spacing: 12) {
-            Text("Hello, welcome!")
-                .font(.system(size: 24))
-                .fontWeight(.semibold)
-            
-            Text("Log in or create an account!")
-                .font(.system(size: 16))
-                .fontWeight(.medium)
-                .foregroundStyle(.secondaryGray)
-        }
-        .padding(.bottom, 10)
+        WelcomeText(title: "Hello, welcome!", 
+                    subtitle: "Log in or create an account!" )
     }
     
     private var authButtons: some View {
@@ -57,19 +48,19 @@ struct WelcomeView: View {
     }
     
     private var registerButton: some View {
-        ActionButton(title: "Register",
+        ActionButton(title: "Login",
                      backgroundColor: .customBlue,
                      foregroundColor: .white) {
-            print("Register")
+            print("Login")
         }
         
     }
     
     private var loginButton: some View {
-        ActionButton(title: "Login",
+        ActionButton(title: "Register",
                      backgroundColor: .secondaryWhite,
                      foregroundColor: .secondaryGray) {
-            print("Login")
+            print("Register")
         }
     }
     
