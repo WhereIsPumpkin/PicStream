@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
+    @ObservedObject var viewModel: LoginViewModel
     
     var body: some View {
         ZStack {
@@ -45,11 +44,11 @@ struct LoginView: View {
     
     private var authFields: some View {
         VStack(spacing: 24) {
-            RoundedTextField(text: $email,
+            RoundedTextField(text: $viewModel.email,
                              placeholder: "Enter your email",
                              icon: .envelope)
             
-            RoundedTextField(text: $password,
+            RoundedTextField(text: $viewModel.password,
                              placeholder: "Enter your email",
                              icon: .lock )
         }
@@ -67,5 +66,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(viewModel: LoginViewModel())
 }
