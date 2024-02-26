@@ -11,6 +11,7 @@ struct WelcomeView: View {
     
     // MARK: - Properties
     @State private var isShowingLoginView = false
+    @State private var isShowingRegisterView = false
     
     // MARK: - Body
     var body: some View {
@@ -19,10 +20,13 @@ struct WelcomeView: View {
                 .navigationDestination(isPresented: $isShowingLoginView) {
                     LoginView()
                 }
+                .navigationDestination(isPresented: $isShowingRegisterView) {
+                    RegistrationView()
+                }
         }
     }
     
-    // MARK: - Computer Properties
+    // MARK: - UI Components
     private var mainContent: some View {
         ZStack {
             Color.background.ignoresSafeArea()
@@ -74,7 +78,7 @@ struct WelcomeView: View {
         ActionButton(title: "Register",
                      backgroundColor: .secondaryWhite,
                      foregroundColor: .secondaryGray) {
-            print("Register")
+            isShowingRegisterView = true
         }
     }
     

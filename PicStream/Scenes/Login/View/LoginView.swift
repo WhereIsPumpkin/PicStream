@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct LoginView: View {
+    // MARK: - Properties
     @StateObject var viewModel = LoginViewModel()
     
+    // MARK: - Body
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            
-            content
+        NavigationStack {
+            ZStack {
+                Color.background.ignoresSafeArea()
+                
+                content
+            }
+            .navigationDestination(isPresented: $viewModel.canNavigateToMainPage) {
+                MainPageView()
+            }
         }
     }
     
+    // MARK: - UI Components
     private var content: some View {
         VStack(spacing: 32) {
             heroImage
@@ -74,13 +82,12 @@ struct LoginView: View {
     }
     
     private var loginButton: some View {
-        ActionButton(title: "Login",
-                     backgroundColor: .customBlue,
-                     foregroundColor: .white) {
+        ActionButton(title: "Login", backgroundColor: .customBlue,foregroundColor: .white, isDisabled: !viewModel.isLoginEnabled) {
             Task {
                 await viewModel.login()
             }
         }
+        
     }
     
 }

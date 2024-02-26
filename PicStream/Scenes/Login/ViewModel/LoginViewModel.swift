@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class LoginViewModel: ObservableObject {
+final class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var lastErrorMessage = "" {
@@ -17,6 +17,9 @@ class LoginViewModel: ObservableObject {
     @Published var isDisplayingError = false
     
     @Published var canNavigateToMainPage: Bool = false
+    var isLoginEnabled: Bool {
+        !email.isEmpty && !password.isEmpty
+    }
     
     private var userRepository: UserRepository
     
@@ -41,11 +44,11 @@ class LoginViewModel: ObservableObject {
         case .authenticationFailed:
             lastErrorMessage = "Authentication failed. Please try again."
         case .userNotFound:
-            lastErrorMessage = "User not found. Please check your email."
+            lastErrorMessage = "User not found."
         case .invalidEmailFormat:
-            lastErrorMessage = "Invalid email format. Please enter a valid email address."
+            lastErrorMessage = "Invalid email format."
         case .incorrectPassword:
-            lastErrorMessage = "Incorrect password. Please try again."
+            lastErrorMessage = "Incorrect password."
         }
     }
 }

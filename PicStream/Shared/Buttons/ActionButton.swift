@@ -11,6 +11,7 @@ struct ActionButton: View {
     let title: String
     let backgroundColor: Color
     let foregroundColor: Color
+    var isDisabled: Bool = false
     let action: () -> Void
     
     var body: some View {
@@ -21,8 +22,9 @@ struct ActionButton: View {
                 .font(.system(size: 20))
                 .frame(maxWidth: .infinity)
                 .fontWeight(.semibold)
-                .background(backgroundColor)
+                .background(isDisabled ? .gray : backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
+                .disabled(isDisabled)
         }
     }
 }

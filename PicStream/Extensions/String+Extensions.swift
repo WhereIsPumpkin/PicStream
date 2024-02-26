@@ -14,6 +14,9 @@ extension String {
     static var lock: String {
         "lock"
     }
+    static var calendar: String {
+        "calendar"
+    }
     
     /// validation
     var isValidEmail: Bool {
