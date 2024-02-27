@@ -24,6 +24,7 @@
 		75909ADF2B8D44A3005AB565 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909ADE2B8D44A3005AB565 /* RegistrationViewModel.swift */; };
 		75909AE22B8D4E53005AB565 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE12B8D4E53005AB565 /* ErrorMessageView.swift */; };
 		75909AE42B8D50EC005AB565 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE32B8D50EC005AB565 /* Binding+Extensions.swift */; };
+		75909AE72B8DE46B005AB565 /* ToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE62B8DE46B005AB565 /* ToolbarButtonModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		75909ADE2B8D44A3005AB565 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		75909AE12B8D4E53005AB565 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		75909AE32B8D50EC005AB565 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
+		75909AE62B8DE46B005AB565 /* ToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		75909ABE2B8CF808005AB565 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				75909AE52B8DE449005AB565 /* ToolBar */,
 				75909ACE2B8D05F0005AB565 /* TextFields */,
 				75909ACB2B8D0528005AB565 /* Views */,
 				75909ABF2B8CF815005AB565 /* Buttons */,
@@ -234,6 +237,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		75909AE52B8DE449005AB565 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				75909AE62B8DE46B005AB565 /* ToolbarButtonModifier.swift */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,6 +319,7 @@
 				75909ACA2B8D03CB005AB565 /* LoginView.swift in Sources */,
 				75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */,
 				75909AD92B8D1636005AB565 /* LoginViewModel.swift in Sources */,
+				75909AE72B8DE46B005AB565 /* ToolbarButtonModifier.swift in Sources */,
 				75909ADD2B8D2FD0005AB565 /* RegistrationView.swift in Sources */,
 				75909AD22B8D097D005AB565 /* String+Extensions.swift in Sources */,
 				75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */,
