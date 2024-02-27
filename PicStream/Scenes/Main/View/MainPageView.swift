@@ -21,7 +21,6 @@ struct MainPageView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
                 content
@@ -31,9 +30,8 @@ struct MainPageView: View {
                     viewModel.fetchImages(forCategory: firstCategory.name)
                 }
             }
-        }
     }
-    
+
     
     // MARK: - Computed Properties
     private var content: some View {
@@ -90,15 +88,12 @@ struct MainPageView: View {
         LazyVGrid(columns: gridItems, spacing: 20) {
             imageContent
         }
-        .navigationDestination(for: ImageModel.self) { selectedImage in
-            DetailPageView(image: selectedImage)
-        }
     }
     
     private var imageContent: some View {
         ForEach(viewModel.images, id: \.id) { imageModel in
-            NavigationLink(value: imageModel) {
-                if let imageURL = URL(string: imageModel.webformatURL) {
+            if let imageURL = URL(string: imageModel.webformatURL) {
+                NavigationLink(destination: DetailPageView(image: imageModel)) {
                     CachedImageView(url: imageURL)
                         .aspectRatio(4/5, contentMode: .fill)
                         .clipShape(RoundedRectangle(cornerRadius: 12))

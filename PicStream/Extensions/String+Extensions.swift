@@ -18,6 +18,9 @@ extension String {
     static var calendar: String {
         "calendar"
     }
+    static var photo: String {
+        "photo"
+    }
     
     // MARK: - Validations
     var isValidEmail: Bool {

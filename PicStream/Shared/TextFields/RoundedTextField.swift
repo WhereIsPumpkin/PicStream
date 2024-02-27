@@ -32,6 +32,7 @@ struct RoundedTextField: View {
         .padding(.leading, 20)
         .padding(.trailing, 16)
         .keyboardType(keyboardType)
+        .foregroundStyle(.black)
         .frame(height: 50)
         .background(.textFieldBackground.opacity(0.2))
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(isError ? Color.red : Color.clear, lineWidth: 4))

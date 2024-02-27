@@ -7,91 +7,130 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct DetailPageView: View {
+    // MARK: - Properties
     let image: ImageModel
     
+    // MARK: - Body
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                // Safely unwrap the main image URL
-                if let mainImageUrl = URL(string: image.webformatURL) {
-                    CachedImageView(url: mainImageUrl)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(12)
-                        .shadow(radius: 5)
-                } else {
-                    // Fallback view in case URL is nil
-                    Image(systemName: "photo")
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(12)
-                        .shadow(radius: 5)
-                }
-                
-                Text("Dimensions: \(image.imageWidth)x\(image.imageHeight)")
-                    .font(.headline)
-                    .padding(.bottom, 1)
-                
-                Text("Type: Photo")
-                    .font(.subheadline)
-                    .padding(.bottom, 1)
-                
-                Text("Tags: \(image.tags)")
-                    .font(.subheadline)
-                    .padding(.bottom, 1)
-                
-                Divider()
-                
-                HStack {
-                    if let userImageUrl = URL(string: image.userImageURL) {
-                        CachedImageView(url: userImageUrl)
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .shadow(radius: 3)
-                    } else {
-                        Image(systemName: "person.fill")
-                            .foregroundColor(.gray)
-                            .frame(width: 50, height: 50)
-                            .background(Color.gray.opacity(0.3))
-                            .clipShape(Circle())
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text(image.user)
-                            .font(.title3)
-                            .fontWeight(.medium)
-                        Text("Views: \(image.views)")
-                            .font(.caption)
-                        Text("Downloads: \(image.downloads)")
-                            .font(.caption)
-                    }
-                    .padding(.leading, 10)
-                }
-                
-                Group {
-                    Text("Likes: \(image.likes)")
-                    Text("Comments: \(image.comments)")
-                }
-                .font(.subheadline)
-                .padding(.top, 1)
-            }
-            .padding()
+        ZStack {
+            Color.background.ignoresSafeArea()
+            
+            scrollableContent
         }
-        .navigationTitle("Detail")
-        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    // MARK: - UI Components
+    private var scrollableContent: some View {
+        ScrollView {
+            content
+        }
+    }
+    
+    private var content: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            imageSection
+            detailSection
+            divider
+            userSection
+            statsSection
+        }
+        .padding()
+    }
+    
+    private var imageSection: some View {
+        Group {
+            if let mainImageUrl = URL(string: image.webformatURL) {
+                CachedImageView(url: mainImageUrl)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+            } else {
+                Image(systemName: .photo)
+                    .aspectRatio(contentMode: .fill)
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+            }
+        }
+        
+    }
+    
+    private var detailSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Dimensions: \(image.imageWidth) x \(image.imageHeight)").font(.headline)
+            Text("Type: Photo").font(.subheadline)
+            tagsView.padding(.top, 1)
+        }
+    }
+    
+    private var divider: some View {
+        Divider()
+            .padding(.vertical)
+    }
+    
+    private var userSection: some View {
+        HStack {
+            userProfileImage
+            VStack(alignment: .leading, spacing: 5) {
+                Text(image.user).font(.title3).fontWeight(.medium)
+            }
+            .padding(.leading, 10)
+        }
+    }
+    
+    private var statsSection: some View {
+        HStack {
+            customIconLabel(iconName: "heart.fill", text: "\(image.likes)", color: .red)
+            customIconLabel(iconName: "text.bubble.fill", text: "\(image.comments)", color: .blue)
+            Spacer()
+            customIconLabel(iconName: "eye.fill", text: "\(image.views)", color: .orange)
+            customIconLabel(iconName: "arrow.down.circle.fill", text: "\(image.downloads)", color: .green)
+        }
+        .padding(.top, 1)
+    }
+    
+    private var tagsView: some View {
+        HStack {
+            ForEach(image.tags.components(separatedBy: ","), id: \.self) { tag in
+                Text(tag)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.blue.opacity(0.2))
+                    .cornerRadius(20)
+            }
+        }
+    }
+    
+    private var userProfileImage: some View {
+        Group {
+            if let userImageUrl = URL(string: image.userImageURL) {
+                CachedImageView(url: userImageUrl)
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
+            } else {
+                Image(systemName: "person.fill")
+                    .foregroundColor(.gray)
+                    .frame(width: 50, height: 50)
+                    .background(Color.gray.opacity(0.3))
+                    .clipShape(Circle())
+            }
+        }
+    }
+    
+    private func customIconLabel(iconName: String, text: String, color: Color) -> some View {
+        HStack(spacing: 5) {
+            Image(systemName: iconName)
+                .foregroundColor(color)
+            Text(text)
+        }
+        .font(.subheadline)
     }
 }
 
-// Preview
-struct DetailPageView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview {
+    NavigationStack {
         DetailPageView(image: ImageModel.example)
     }
-}
-
-// Preview
-#Preview {
-    DetailPageView(image: ImageModel.example)
 }
 

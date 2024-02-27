@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct PicStreamApp: App {
+    @StateObject private var navigationPathManager = NavigationPathManager()
+    
     var body: some Scene {
         WindowGroup {
-            MainPageView()
+            NavigationStack(path: $navigationPathManager.path) {
+                WelcomeView()
+            }
+            .environmentObject(navigationPathManager)
         }
     }
 }

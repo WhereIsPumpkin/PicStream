@@ -15,15 +15,13 @@ struct WelcomeView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
-            mainContent
-                .navigationDestination(isPresented: $isShowingLoginView) {
-                    LoginView()
-                }
-                .navigationDestination(isPresented: $isShowingRegisterView) {
-                    RegistrationView()
-                }
-        }
+        mainContent
+            .navigationDestination(isPresented: $isShowingLoginView) {
+                LoginView()
+            }
+            .navigationDestination(isPresented: $isShowingRegisterView) {
+                RegistrationView()
+            }
     }
     
     // MARK: - UI Components

@@ -14,7 +14,6 @@ struct LoginView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
                 content
@@ -28,7 +27,6 @@ struct LoginView: View {
             .toolbarButton(title: "Register") {
                 canNavigateToRegister = true
             }
-        }
     }
     
     // MARK: - UI Components
