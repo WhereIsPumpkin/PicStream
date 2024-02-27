@@ -21,13 +21,15 @@ struct MainPageView: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            content
-        }
-        .onAppear {
-            if let firstCategory = categories.first {
-                viewModel.fetchImages(forCategory: firstCategory.name)
+        NavigationStack {
+            ZStack {
+                Color.background.ignoresSafeArea()
+                content
+            }
+            .onAppear {
+                if let firstCategory = categories.first {
+                    viewModel.fetchImages(forCategory: firstCategory.name)
+                }
             }
         }
     }
@@ -88,14 +90,19 @@ struct MainPageView: View {
         LazyVGrid(columns: gridItems, spacing: 20) {
             imageContent
         }
+        .navigationDestination(for: ImageModel.self) { selectedImage in
+            DetailPageView(image: selectedImage)
+        }
     }
     
     private var imageContent: some View {
         ForEach(viewModel.images, id: \.id) { imageModel in
-            if let imageURL = URL(string: imageModel.webformatURL) {
-                CachedImageView(url: imageURL)
-                    .aspectRatio(4/5, contentMode: .fill)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            NavigationLink(value: imageModel) {
+                if let imageURL = URL(string: imageModel.webformatURL) {
+                    CachedImageView(url: imageURL)
+                        .aspectRatio(4/5, contentMode: .fill)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
             }
         }
     }

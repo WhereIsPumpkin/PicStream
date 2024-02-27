@@ -42,6 +42,7 @@ final class MockUserRepository: UserRepository {
     }
     
     func register(email: String, password: String, age: Int) async throws -> Void {
+        ///   network delay simulation
         try await Task.sleep(nanoseconds: 500_000_000)
         
         if registeredUsers.contains(where: { $0.email == email }) {
