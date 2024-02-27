@@ -25,6 +25,12 @@
 		75909AE22B8D4E53005AB565 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE12B8D4E53005AB565 /* ErrorMessageView.swift */; };
 		75909AE42B8D50EC005AB565 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE32B8D50EC005AB565 /* Binding+Extensions.swift */; };
 		75909AE72B8DE46B005AB565 /* ToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE62B8DE46B005AB565 /* ToolbarButtonModifier.swift */; };
+		75909AEA2B8DE76C005AB565 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AE92B8DE76C005AB565 /* MainPageView.swift */; };
+		75909AEE2B8DE7BF005AB565 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AED2B8DE7BF005AB565 /* MainPageViewModel.swift */; };
+		75909AF02B8DF0AC005AB565 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AEF2B8DF0AC005AB565 /* Category.swift */; };
+		75909AF52B8DF880005AB565 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AF42B8DF880005AB565 /* ImageManager.swift */; };
+		75909AF72B8DF89E005AB565 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AF62B8DF89E005AB565 /* Image.swift */; };
+		75909AFA2B8E11BF005AB565 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AF92B8E11BF005AB565 /* AsyncImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +53,12 @@
 		75909AE12B8D4E53005AB565 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		75909AE32B8D50EC005AB565 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		75909AE62B8DE46B005AB565 /* ToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonModifier.swift; sourceTree = "<group>"; };
+		75909AE92B8DE76C005AB565 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
+		75909AED2B8DE7BF005AB565 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		75909AEF2B8DF0AC005AB565 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		75909AF42B8DF880005AB565 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		75909AF62B8DF89E005AB565 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		75909AF92B8E11BF005AB565 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 				75909AB52B8CE169005AB565 /* Models */,
 				75909ABA2B8CF182005AB565 /* Scenes */,
 				75909ABE2B8CF808005AB565 /* Shared */,
+				75909AF32B8DF830005AB565 /* Managers */,
 				75909AC22B8CFA86005AB565 /* Extensions */,
 				75909AAA2B8CD6A8005AB565 /* Assets.xcassets */,
 				75909AAC2B8CD6A8005AB565 /* Preview Content */,
@@ -111,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				75909AB72B8CE1E4005AB565 /* User.swift */,
+				75909AEF2B8DF0AC005AB565 /* Category.swift */,
+				75909AF62B8DF89E005AB565 /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +136,7 @@
 				75909AC52B8CFB3F005AB565 /* Welcome */,
 				75909ABB2B8CF189005AB565 /* Login */,
 				75909AC62B8D0256005AB565 /* Registration */,
+				75909AE82B8DE729005AB565 /* Main */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -137,6 +153,7 @@
 		75909ABE2B8CF808005AB565 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				75909AF82B8E11B1005AB565 /* Image Loader */,
 				75909AE52B8DE449005AB565 /* ToolBar */,
 				75909ACE2B8D05F0005AB565 /* TextFields */,
 				75909ACB2B8D0528005AB565 /* Views */,
@@ -245,6 +262,47 @@
 			path = ToolBar;
 			sourceTree = "<group>";
 		};
+		75909AE82B8DE729005AB565 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				75909AEB2B8DE795005AB565 /* View */,
+				75909AEC2B8DE798005AB565 /* ViewModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		75909AEB2B8DE795005AB565 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75909AE92B8DE76C005AB565 /* MainPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75909AEC2B8DE798005AB565 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				75909AED2B8DE7BF005AB565 /* MainPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		75909AF32B8DF830005AB565 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				75909AF42B8DF880005AB565 /* ImageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		75909AF82B8E11B1005AB565 /* Image Loader */ = {
+			isa = PBXGroup;
+			children = (
+				75909AF92B8E11BF005AB565 /* AsyncImageLoader.swift */,
+			);
+			path = "Image Loader";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -316,13 +374,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				75909AE42B8D50EC005AB565 /* Binding+Extensions.swift in Sources */,
+				75909AFA2B8E11BF005AB565 /* AsyncImageLoader.swift in Sources */,
 				75909ACA2B8D03CB005AB565 /* LoginView.swift in Sources */,
+				75909AF02B8DF0AC005AB565 /* Category.swift in Sources */,
 				75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */,
+				75909AEA2B8DE76C005AB565 /* MainPageView.swift in Sources */,
 				75909AD92B8D1636005AB565 /* LoginViewModel.swift in Sources */,
 				75909AE72B8DE46B005AB565 /* ToolbarButtonModifier.swift in Sources */,
+				75909AF72B8DF89E005AB565 /* Image.swift in Sources */,
+				75909AEE2B8DE7BF005AB565 /* MainPageViewModel.swift in Sources */,
 				75909ADD2B8D2FD0005AB565 /* RegistrationView.swift in Sources */,
 				75909AD22B8D097D005AB565 /* String+Extensions.swift in Sources */,
 				75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */,
+				75909AF52B8DF880005AB565 /* ImageManager.swift in Sources */,
 				75909AD02B8D0606005AB565 /* RoundedTextField.swift in Sources */,
 				75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */,
 				75909AD52B8D119D005AB565 /* UserRepository.swift in Sources */,

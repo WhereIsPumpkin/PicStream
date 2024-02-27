@@ -100,9 +100,3 @@ struct LoginView: View {
     LoginView(viewModel: LoginViewModel())
 }
 
-// Example MainPageView placeholder
-struct MainPageView: View {
-    var body: some View {
-        Text("Main Page")
-    }
-}

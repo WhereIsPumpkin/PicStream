@@ -40,7 +40,7 @@ final class LoginViewModel: ObservableObject {
         }
         
         do {
-            try await userRepository.login(email: email, password: password)
+            try await userRepository.login(email: email.lowercased(), password: password)
             canNavigateToMainPage = true
         } catch let error as UserError {
             handleUserError(error)
