@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755B36112B8E4CDD00BF65B5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B36102B8E4CDD00BF65B5 /* RouteManager.swift */; };
 		75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */; };
 		75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA82B8CD6A7005AB565 /* WelcomeView.swift */; };
 		75909AAB2B8CD6A8005AB565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75909AAA2B8CD6A8005AB565 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		755B36102B8E4CDD00BF65B5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		75909AA32B8CD6A7005AB565 /* PicStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicStreamApp.swift; sourceTree = "<group>"; };
 		75909AA82B8CD6A7005AB565 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				75909AF42B8DF880005AB565 /* ImageManager.swift */,
+				755B36102B8E4CDD00BF65B5 /* RouteManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */,
 				75909AF52B8DF880005AB565 /* ImageManager.swift in Sources */,
 				75909AD02B8D0606005AB565 /* RoundedTextField.swift in Sources */,
+				755B36112B8E4CDD00BF65B5 /* RouteManager.swift in Sources */,
 				75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */,
 				75909AD52B8D119D005AB565 /* UserRepository.swift in Sources */,
 				75909ADF2B8D44A3005AB565 /* RegistrationViewModel.swift in Sources */,

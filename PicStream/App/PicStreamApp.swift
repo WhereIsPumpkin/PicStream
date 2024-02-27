@@ -10,11 +10,24 @@ import SwiftUI
 @main
 struct PicStreamApp: App {
     
+    @ObservedObject var router = Router()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationStack(path: $router.navPath) {
                 WelcomeView()
                     .preferredColorScheme(.light)
+                    .navigationDestination(for: Router.Destination.self) { destination in
+                        switch destination {
+                        case .login:
+                            LoginView()
+                                .environmentObject(router)
+                        case .register:
+                            RegistrationView()
+                                .environmentObject(router)
+                        }
+                    }
+                    .environmentObject(router)
             }
         }
     }

@@ -7,10 +7,10 @@
 
 import Foundation
 
-class ImageManager {
+final class ImageManager {
     static let shared = ImageManager()
     
-    let apiKey = "42574921-13e27f24a2bd05eabb3a193ce"
+    private let apiKey = "42574921-13e27f24a2bd05eabb3a193ce"
     
     func fetchImages(forCategory category: String) async throws -> [ImageModel] {
         guard let query = category.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
