@@ -28,7 +28,7 @@ class RegistrationViewModel: ObservableObject {
     private var userRepository: UserRepository
     
     // MARK: - Initialization
-    init(userRepository: UserRepository = MockUserRepository()) {
+    init(userRepository: UserRepository = MockUserRepository.shared) {
         self.userRepository = userRepository
     }
     

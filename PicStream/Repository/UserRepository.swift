@@ -24,6 +24,10 @@ final class MockUserRepository: UserRepository {
         User(id: UUID(), email: "test@email.com", password: "test1234", age: 21)
     ]
     
+    static let shared = MockUserRepository()
+    
+    private init() {}
+    
     func login(email: String, password: String) async throws -> Void {
         ///   network delay simulation
         try await Task.sleep(nanoseconds: 500_000_000)
