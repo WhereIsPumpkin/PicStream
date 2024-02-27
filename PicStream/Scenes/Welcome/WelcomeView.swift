@@ -10,18 +10,11 @@ import SwiftUI
 struct WelcomeView: View {
     
     // MARK: - Properties
-    @State private var isShowingLoginView = false
-    @State private var isShowingRegisterView = false
+    @EnvironmentObject var router: Router
     
     // MARK: - Body
     var body: some View {
         mainContent
-            .navigationDestination(isPresented: $isShowingLoginView) {
-                LoginView()
-            }
-            .navigationDestination(isPresented: $isShowingRegisterView) {
-                RegistrationView()
-            }
     }
     
     // MARK: - UI Components
@@ -67,7 +60,7 @@ struct WelcomeView: View {
         ActionButton(title: "Login",
                      backgroundColor: .customBlue,
                      foregroundColor: .white) {
-            isShowingLoginView = true
+            router.navigate(to: .login)
         }
         
     }
@@ -76,7 +69,7 @@ struct WelcomeView: View {
         ActionButton(title: "Register",
                      backgroundColor: .secondaryWhite,
                      foregroundColor: .secondaryGray) {
-            isShowingRegisterView = true
+            router.navigate(to: .register)
         }
     }
     
@@ -93,4 +86,5 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
+        .environmentObject(Router())
 }

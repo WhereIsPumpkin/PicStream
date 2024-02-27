@@ -44,6 +44,7 @@ struct MainPageView: View {
         .scrollIndicators(.hidden)
         .padding(.horizontal, 24)
         .padding(.vertical, 32)
+        .navigationBarBackButtonHidden(true)
     }
     
     private var heroText: some View {

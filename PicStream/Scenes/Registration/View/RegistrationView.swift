@@ -11,7 +11,7 @@ struct RegistrationView: View {
     
     // MARK: - Properties
     @StateObject private var viewModel = RegistrationViewModel()
-    @State var canNavigateToLogin = false
+    @EnvironmentObject var router: Router
     
     // MARK: - Body
     var body: some View {
@@ -22,11 +22,9 @@ struct RegistrationView: View {
             .navigationDestination(isPresented: $viewModel.registrationSuccess) {
                 MainPageView()
             }
-            .navigationDestination(isPresented: $canNavigateToLogin) {
-                LoginView()
-            }
             .toolbarButton(title: "Login") {
-                canNavigateToLogin = true
+                router.navigateToRoot()
+                router.navigate(to: .login)
             }
     }
     

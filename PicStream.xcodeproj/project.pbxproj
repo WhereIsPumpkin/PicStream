@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755B36112B8E4CDD00BF65B5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B36102B8E4CDD00BF65B5 /* RouteManager.swift */; };
 		75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */; };
 		75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA82B8CD6A7005AB565 /* WelcomeView.swift */; };
 		75909AAB2B8CD6A8005AB565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75909AAA2B8CD6A8005AB565 /* Assets.xcassets */; };
@@ -33,10 +34,10 @@
 		75909AFA2B8E11BF005AB565 /* CachedImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AF92B8E11BF005AB565 /* CachedImageLoader.swift */; };
 		75909AFD2B8E130D005AB565 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 75909AFC2B8E130D005AB565 /* SDWebImageSwiftUI */; };
 		75909B002B8E1761005AB565 /* DetailsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AFF2B8E1761005AB565 /* DetailsPageView.swift */; };
-		75909B022B8E2E80005AB565 /* NavigationPathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909B012B8E2E80005AB565 /* NavigationPathManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		755B36102B8E4CDD00BF65B5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		75909AA32B8CD6A7005AB565 /* PicStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicStreamApp.swift; sourceTree = "<group>"; };
 		75909AA82B8CD6A7005AB565 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		75909AF62B8DF89E005AB565 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		75909AF92B8E11BF005AB565 /* CachedImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageLoader.swift; sourceTree = "<group>"; };
 		75909AFF2B8E1761005AB565 /* DetailsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPageView.swift; sourceTree = "<group>"; };
-		75909B012B8E2E80005AB565 /* NavigationPathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationPathManager.swift; path = ../../../../Documents/NavigationPathManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				75909AF42B8DF880005AB565 /* ImageManager.swift */,
-				75909B012B8E2E80005AB565 /* NavigationPathManager.swift */,
+				755B36102B8E4CDD00BF65B5 /* RouteManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -401,7 +401,6 @@
 				75909AF02B8DF0AC005AB565 /* Category.swift in Sources */,
 				75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */,
 				75909AEA2B8DE76C005AB565 /* MainPageView.swift in Sources */,
-				75909B022B8E2E80005AB565 /* NavigationPathManager.swift in Sources */,
 				75909AD92B8D1636005AB565 /* LoginViewModel.swift in Sources */,
 				75909AE72B8DE46B005AB565 /* ToolbarButtonModifier.swift in Sources */,
 				75909AF72B8DF89E005AB565 /* Image.swift in Sources */,
@@ -411,6 +410,7 @@
 				75909ACD2B8D0535005AB565 /* WelcomeText.swift in Sources */,
 				75909AF52B8DF880005AB565 /* ImageManager.swift in Sources */,
 				75909AD02B8D0606005AB565 /* RoundedTextField.swift in Sources */,
+				755B36112B8E4CDD00BF65B5 /* RouteManager.swift in Sources */,
 				75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */,
 				75909AD52B8D119D005AB565 /* UserRepository.swift in Sources */,
 				75909ADF2B8D44A3005AB565 /* RegistrationViewModel.swift in Sources */,

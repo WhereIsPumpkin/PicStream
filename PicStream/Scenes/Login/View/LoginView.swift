@@ -11,7 +11,8 @@ struct LoginView: View {
     // MARK: - Properties
     @StateObject var viewModel = LoginViewModel()
     @State var canNavigateToRegister = false
-    
+    @EnvironmentObject var router: Router
+
     // MARK: - Body
     var body: some View {
             ZStack {
@@ -21,11 +22,9 @@ struct LoginView: View {
             .navigationDestination(isPresented: $viewModel.canNavigateToMainPage) {
                 MainPageView()
             }
-            .navigationDestination(isPresented: $canNavigateToRegister) {
-                RegistrationView()
-            }
             .toolbarButton(title: "Register") {
-                canNavigateToRegister = true
+                router.navigateToRoot()
+                router.navigate(to: .register)
             }
     }
     
