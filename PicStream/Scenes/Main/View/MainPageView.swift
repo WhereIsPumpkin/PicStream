@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct MainPageView: View {
+    // MARK: - Properties
     @State private var selectedCategoryId: UUID?
     private let categories = Category.allCategories
     @StateObject private var viewModel = MainPageViewModel()
     private let gridItems = [ GridItem(.adaptive(minimum: 144), spacing: 12)]
     
+    // MARK: - Initialization
     init() {
         _selectedCategoryId = State(initialValue: categories.first?.id)
     }
     
+    // MARK: - Body
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
@@ -29,6 +32,8 @@ struct MainPageView: View {
         }
     }
     
+    
+    // MARK: - Computed Properties
     private var content: some View {
         ScrollView {
             heroText
@@ -62,18 +67,6 @@ struct MainPageView: View {
         }
     }
     
-    private var imagesGrid: some View {
-        LazyVGrid(columns: gridItems, spacing: 20) {
-            ForEach(viewModel.images, id: \.id) { imageModel in
-                if let imageURL = URL(string: imageModel.webformatURL) {
-                    CachedImageView(url: imageURL)
-                        .aspectRatio(4/5, contentMode: .fill)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                }
-            }
-        }
-    }
-
     private func categoryText(for category: Category) -> some View {
         VStack(alignment: .leading) {
             Text(category.name)
@@ -87,6 +80,22 @@ struct MainPageView: View {
             if selectedCategoryId == category.id {
                 Circle()
                     .frame(width: 8)
+            }
+        }
+    }
+    
+    private var imagesGrid: some View {
+        LazyVGrid(columns: gridItems, spacing: 20) {
+            imageContent
+        }
+    }
+    
+    private var imageContent: some View {
+        ForEach(viewModel.images, id: \.id) { imageModel in
+            if let imageURL = URL(string: imageModel.webformatURL) {
+                CachedImageView(url: imageURL)
+                    .aspectRatio(4/5, contentMode: .fill)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
     }
