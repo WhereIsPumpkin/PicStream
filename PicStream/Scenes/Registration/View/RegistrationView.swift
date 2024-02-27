@@ -11,6 +11,7 @@ struct RegistrationView: View {
     
     // MARK: - Properties
     @StateObject private var viewModel = RegistrationViewModel()
+    @State var canNavigateToLogin = false
     
     // MARK: - Body
     var body: some View {
@@ -21,6 +22,12 @@ struct RegistrationView: View {
             }
             .navigationDestination(isPresented: $viewModel.registrationSuccess) {
                 MainPageView()
+            }
+            .navigationDestination(isPresented: $canNavigateToLogin) {
+                LoginView()
+            }
+            .toolbarButton(title: "Login") {
+                canNavigateToLogin = true
             }
         }
     }
