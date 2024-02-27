@@ -10,19 +10,23 @@ import SwiftUI
 struct LoginView: View {
     // MARK: - Properties
     @StateObject var viewModel = LoginViewModel()
+    @State var canNavigateToRegister = false
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                
                 content
             }
             .navigationDestination(isPresented: $viewModel.canNavigateToMainPage) {
                 MainPageView()
             }
-        }
+            .navigationDestination(isPresented: $canNavigateToRegister) {
+                RegistrationView()
+            }
+            .toolbarButton(title: "Register") {
+                canNavigateToRegister = true
+            }
     }
     
     // MARK: - UI Components
@@ -61,7 +65,7 @@ struct LoginView: View {
                 RoundedTextField(text: $viewModel.password,
                                  placeholder: "Enter your password",
                                  icon: "lock.fill",
-                                 isSecure: true, 
+                                 isSecure: true,
                                  isError: viewModel.isDisplayingError)
             }
             
@@ -94,9 +98,3 @@ struct LoginView: View {
     LoginView(viewModel: LoginViewModel())
 }
 
-// Example MainPageView placeholder
-struct MainPageView: View {
-    var body: some View {
-        Text("Main Page")
-    }
-}

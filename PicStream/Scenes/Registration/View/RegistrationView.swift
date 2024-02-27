@@ -11,10 +11,10 @@ struct RegistrationView: View {
     
     // MARK: - Properties
     @StateObject private var viewModel = RegistrationViewModel()
+    @State var canNavigateToLogin = false
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
                 content
@@ -22,7 +22,12 @@ struct RegistrationView: View {
             .navigationDestination(isPresented: $viewModel.registrationSuccess) {
                 MainPageView()
             }
-        }
+            .navigationDestination(isPresented: $canNavigateToLogin) {
+                LoginView()
+            }
+            .toolbarButton(title: "Login") {
+                canNavigateToLogin = true
+            }
     }
     
     // MARK: - UI Components

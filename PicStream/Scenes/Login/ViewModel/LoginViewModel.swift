@@ -18,7 +18,7 @@ final class LoginViewModel: ObservableObject {
     }
     @Published var isDisplayingError = false
     @Published var canNavigateToMainPage: Bool = false
-
+    
     // MARK: - Computed Properties
     var isLoginEnabled: Bool {
         !email.isEmpty && !password.isEmpty
@@ -28,7 +28,7 @@ final class LoginViewModel: ObservableObject {
     private var userRepository: UserRepository
     
     // MARK: - Initialization
-    init(userRepository: UserRepository = MockUserRepository()) {
+    init(userRepository: UserRepository = MockUserRepository.shared) {
         self.userRepository = userRepository
     }
     
@@ -40,7 +40,7 @@ final class LoginViewModel: ObservableObject {
         }
         
         do {
-            try await userRepository.login(email: email, password: password)
+            try await userRepository.login(email: email.lowercased(), password: password)
             canNavigateToMainPage = true
         } catch let error as UserError {
             handleUserError(error)

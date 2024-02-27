@@ -24,9 +24,13 @@ final class MockUserRepository: UserRepository {
         User(id: UUID(), email: "test@email.com", password: "test1234", age: 21)
     ]
     
+    static let shared = MockUserRepository()
+    
+    private init() {}
+    
     func login(email: String, password: String) async throws -> Void {
         ///   network delay simulation
-        try await Task.sleep(nanoseconds: 1_000_000_000)
+        try await Task.sleep(nanoseconds: 500_000_000)
         
         guard let user = registeredUsers.first(where: { $0.email == email }) else {
             throw UserError.userNotFound
@@ -38,7 +42,8 @@ final class MockUserRepository: UserRepository {
     }
     
     func register(email: String, password: String, age: Int) async throws -> Void {
-        try await Task.sleep(nanoseconds: 1_000_000_000)
+        ///   network delay simulation
+        try await Task.sleep(nanoseconds: 500_000_000)
         
         if registeredUsers.contains(where: { $0.email == email }) {
             throw UserError.emailAlreadyInUse

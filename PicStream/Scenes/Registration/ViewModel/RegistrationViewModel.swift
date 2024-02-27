@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class RegistrationViewModel: ObservableObject {
+final class RegistrationViewModel: ObservableObject {
     // MARK: - Published Properties
     @Published var email: String = ""
     @Published var password: String = ""
@@ -28,7 +28,7 @@ class RegistrationViewModel: ObservableObject {
     private var userRepository: UserRepository
     
     // MARK: - Initialization
-    init(userRepository: UserRepository = MockUserRepository()) {
+    init(userRepository: UserRepository = MockUserRepository.shared) {
         self.userRepository = userRepository
     }
     
@@ -38,7 +38,7 @@ class RegistrationViewModel: ObservableObject {
         
         do {
             let ageInt = Int(age) ?? 0
-            try await userRepository.register(email: email, password: password, age: ageInt)
+            try await userRepository.register(email: email.lowercased(), password: password, age: ageInt)
             registrationSuccess = true
         } catch UserError.emailAlreadyInUse {
             emailErrorMessage = "This email is already in use."
