@@ -66,14 +66,14 @@ struct MainPageView: View {
         LazyVGrid(columns: gridItems, spacing: 20) {
             ForEach(viewModel.images, id: \.id) { imageModel in
                 if let imageURL = URL(string: imageModel.webformatURL) {
-                    AsyncImageLoaderView(url: imageURL)
-                        .aspectRatio(3/4, contentMode: .fill)
+                    CachedImageView(url: imageURL)
+                        .aspectRatio(4/5, contentMode: .fill)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
         }
     }
-    
+
     private func categoryText(for category: Category) -> some View {
         VStack(alignment: .leading) {
             Text(category.name)

@@ -11,7 +11,7 @@ import SwiftUI
 struct PicStreamApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            MainPageView()
         }
     }
 }
