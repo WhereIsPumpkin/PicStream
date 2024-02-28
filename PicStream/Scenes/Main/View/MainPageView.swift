@@ -13,7 +13,6 @@ struct MainPageView: View {
     private let categories = Category.allCategories
     @StateObject private var viewModel = MainPageViewModel()
     @State private var selectedImage: ImageModel?
-    private let gridItems = [ GridItem(.adaptive(minimum: 144), spacing: 12)]
     @EnvironmentObject var router: Router
     
     // MARK: - Initialization
@@ -40,7 +39,7 @@ struct MainPageView: View {
         ScrollView {
             heroText
             categoriesScrollView
-            imagesGrid
+            imageCollection
             Spacer()
         }
         .scrollIndicators(.hidden)
@@ -87,7 +86,7 @@ struct MainPageView: View {
         }
     }
     
-    private var imagesGrid: some View {
+    private var imageCollection: some View {
         ImageCollectionView(images: $viewModel.images, selectedImage: $selectedImage)
             .frame(height: 600)
             .onChange(of: selectedImage) {
@@ -96,7 +95,6 @@ struct MainPageView: View {
                 }
             }
     }
-    
 }
 
 #Preview {
