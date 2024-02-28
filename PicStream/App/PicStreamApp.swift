@@ -15,7 +15,7 @@ struct PicStreamApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.navPath) {
-                WelcomeView()
+                MainPageView()
                     .preferredColorScheme(.light)
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
