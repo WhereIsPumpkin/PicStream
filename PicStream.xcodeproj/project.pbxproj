@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		755B36112B8E4CDD00BF65B5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B36102B8E4CDD00BF65B5 /* RouteManager.swift */; };
 		755B36192B8F5D2100BF65B5 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B36182B8F5D2100BF65B5 /* ImageCollectionView.swift */; };
+		755B361B2B8F5E5100BF65B5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B361A2B8F5E5100BF65B5 /* ImageCollectionViewCell.swift */; };
 		75909AA72B8CD6A7005AB565 /* PicStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */; };
 		75909AA92B8CD6A7005AB565 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75909AA82B8CD6A7005AB565 /* WelcomeView.swift */; };
 		75909AAB2B8CD6A8005AB565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75909AAA2B8CD6A8005AB565 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		755B36102B8E4CDD00BF65B5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		755B36182B8F5D2100BF65B5 /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
+		755B361A2B8F5E5100BF65B5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		75909AA32B8CD6A7005AB565 /* PicStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75909AA62B8CD6A7005AB565 /* PicStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicStreamApp.swift; sourceTree = "<group>"; };
 		75909AA82B8CD6A7005AB565 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		755B36152B8F532800BF65B5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				755B361A2B8F5E5100BF65B5 /* ImageCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			files = (
 				75909AE42B8D50EC005AB565 /* Binding+Extensions.swift in Sources */,
 				75909AFA2B8E11BF005AB565 /* CachedImageLoader.swift in Sources */,
+				755B361B2B8F5E5100BF65B5 /* ImageCollectionViewCell.swift in Sources */,
 				75909ACA2B8D03CB005AB565 /* LoginView.swift in Sources */,
 				75909AF02B8DF0AC005AB565 /* Category.swift in Sources */,
 				755B36192B8F5D2100BF65B5 /* ImageCollectionView.swift in Sources */,
