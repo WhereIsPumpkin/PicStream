@@ -12,6 +12,7 @@ struct MainPageView: View {
     @State private var selectedCategoryId: UUID?
     private let categories = Category.allCategories
     @StateObject private var viewModel = MainPageViewModel()
+    @State private var selectedImage: ImageModel?
     private let gridItems = [ GridItem(.adaptive(minimum: 144), spacing: 12)]
     
     // MARK: - Initialization
@@ -86,9 +87,8 @@ struct MainPageView: View {
     }
     
     private var imagesGrid: some View {
-        LazyVGrid(columns: gridItems, spacing: 20) {
-            imageContent
-        }
+        ImageCollectionView(images: $viewModel.images, selectedImage: $selectedImage)
+            .frame(height: 600)
     }
     
     private var imageContent: some View {

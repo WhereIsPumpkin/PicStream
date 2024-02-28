@@ -33,11 +33,18 @@ struct ImageCollectionView: UIViewRepresentable {
         }
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            
+            parent.images.count
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
+            let image = parent.images[indexPath.item]
             
+            if let url = URL(string: image.webformatURL) {
+                cell.configure(with: url)
+            }
+            
+            return cell
         }
     }
 }
