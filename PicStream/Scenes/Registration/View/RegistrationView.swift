@@ -19,9 +19,6 @@ struct RegistrationView: View {
                 Color.background.ignoresSafeArea()
                 content
             }
-            .navigationDestination(isPresented: $viewModel.registrationSuccess) {
-                MainPageView()
-            }
             .toolbarButton(title: "Login") {
                 router.navigateToRoot()
                 router.navigate(to: .login)
@@ -82,11 +79,13 @@ struct RegistrationView: View {
         }
     }
     
-    
     private var registerButton: some View {
         ActionButton(title: "Register", backgroundColor: .customBlue, foregroundColor: .white, isDisabled: !viewModel.isRegisterEnabled) {
             Task {
                 await viewModel.register()
+                if viewModel.registrationSuccess {
+                    router.navigate(to: .mainPage)
+                }
             }
         }
     }

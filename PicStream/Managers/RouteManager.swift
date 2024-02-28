@@ -12,6 +12,8 @@ final class Router: ObservableObject {
     public enum Destination: Codable, Hashable {
         case register
         case login
+        case mainPage
+        case detailPage(ImageModel)
     }
     
     @Published var navPath = NavigationPath()

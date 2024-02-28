@@ -11,7 +11,7 @@ struct PixabayResponse: Decodable {
     let hits: [ImageModel]
 }
 
-struct ImageModel: Identifiable, Decodable, Hashable {
+struct ImageModel: Identifiable, Codable, Hashable {
     let id: Int
     let webformatURL: String
     let user: String

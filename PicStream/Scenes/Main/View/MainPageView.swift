@@ -14,6 +14,7 @@ struct MainPageView: View {
     @StateObject private var viewModel = MainPageViewModel()
     @State private var selectedImage: ImageModel?
     private let gridItems = [ GridItem(.adaptive(minimum: 144), spacing: 12)]
+    @EnvironmentObject var router: Router
     
     // MARK: - Initialization
     init() {
@@ -22,17 +23,17 @@ struct MainPageView: View {
     
     // MARK: - Body
     var body: some View {
-            ZStack {
-                Color.background.ignoresSafeArea()
-                content
+        ZStack {
+            Color.background.ignoresSafeArea()
+            content
+        }
+        .onAppear {
+            if let firstCategory = categories.first {
+                viewModel.fetchImages(forCategory: firstCategory.name)
             }
-            .onAppear {
-                if let firstCategory = categories.first {
-                    viewModel.fetchImages(forCategory: firstCategory.name)
-                }
-            }
+        }
     }
-
+    
     
     // MARK: - Computed Properties
     private var content: some View {
@@ -89,18 +90,11 @@ struct MainPageView: View {
     private var imagesGrid: some View {
         ImageCollectionView(images: $viewModel.images, selectedImage: $selectedImage)
             .frame(height: 600)
-    }
-    
-    private var imageContent: some View {
-        ForEach(viewModel.images, id: \.id) { imageModel in
-            if let imageURL = URL(string: imageModel.webformatURL) {
-                NavigationLink(destination: DetailPageView(image: imageModel)) {
-                    CachedImageView(url: imageURL)
-                        .aspectRatio(4/5, contentMode: .fill)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+            .onChange(of: selectedImage) {
+                if let selectedImage = selectedImage {
+                    router.navigate(to: .detailPage(selectedImage))
                 }
             }
-        }
     }
     
 }

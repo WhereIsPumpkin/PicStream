@@ -15,7 +15,7 @@ struct PicStreamApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.navPath) {
-                MainPageView()
+                WelcomeView()
                     .preferredColorScheme(.light)
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
@@ -25,10 +25,15 @@ struct PicStreamApp: App {
                         case .register:
                             RegistrationView()
                                 .environmentObject(router)
+                        case .mainPage:
+                            MainPageView().environmentObject(router)
+                        case .detailPage(let imageModel):
+                            DetailPageView(image: imageModel)
                         }
                     }
-                    .environmentObject(router)
+                
             }
+            .environmentObject(router)
         }
     }
 }

@@ -46,6 +46,11 @@ struct ImageCollectionView: UIViewRepresentable {
             
             return cell
         }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let image = parent.images[indexPath.item]
+            parent.selectedImage = image
+        }
     }
 }
 
@@ -65,9 +70,12 @@ extension UICollectionViewFlowLayout {
     static func customLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 144, height: 180)
-        layout.minimumLineSpacing = 12
-        layout.minimumInteritemSpacing = 12
+        
+        let screenWidth = UIScreen.main.bounds.width
+        let padding: CGFloat = 32.0 * 2
+        let adjustedWidth = (screenWidth - padding) / 2
+        
+        layout.itemSize = CGSize(width: adjustedWidth, height: 180)
         return layout
     }
 }

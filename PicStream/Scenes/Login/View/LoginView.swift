@@ -12,20 +12,17 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     @State var canNavigateToRegister = false
     @EnvironmentObject var router: Router
-
+    
     // MARK: - Body
     var body: some View {
-            ZStack {
-                Color.background.ignoresSafeArea()
-                content
-            }
-            .navigationDestination(isPresented: $viewModel.canNavigateToMainPage) {
-                MainPageView()
-            }
-            .toolbarButton(title: "Register") {
-                router.navigateToRoot()
-                router.navigate(to: .register)
-            }
+        ZStack {
+            Color.background.ignoresSafeArea()
+            content
+        }
+        .toolbarButton(title: "Register") {
+            router.navigateToRoot()
+            router.navigate(to: .register)
+        }
     }
     
     // MARK: - UI Components
@@ -86,7 +83,11 @@ struct LoginView: View {
         ActionButton(title: "Login", backgroundColor: .customBlue,foregroundColor: .white, isDisabled: !viewModel.isLoginEnabled) {
             Task {
                 await viewModel.login()
+                if viewModel.canNavigateToMainPage {
+                    router.navigate(to: .mainPage)
+                }
             }
+            
         }
         
     }
